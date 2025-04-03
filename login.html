@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <img src="https://brandlogos.net/wp-content/uploads/2022/10/google_developers-logo_brandlogos.net_dcdpg.png" alt="Google Developers Logo" class="logo">
+    <h2 class="org">Google Developer Student Clubs</h2>
+    <h3 class="sub-project">Project</h3>
+    <br>    
+    <div class="container">
+        <h2>Login</h2>
+        <input type="email" id="email" placeholder="Email" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button id="login-button">Login</button>
+        <p id="message">Don't have an account?</p>
+        <a href="signup.html" class="signup-redirect"><p>Sign-up now</p></a>
+    </div>
+
+    <!-- Link to Firebase JS -->
+    <script src="auth.js"></script>
+</body>
+</html>

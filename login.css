@@ -1,0 +1,89 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    text-align: center;
+    color: white;
+}
+
+.org {
+    color: black;
+}
+
+.sub-project {
+    color: black;
+}
+
+.logo {
+    width: 150px;
+}
+
+h2, h3 {
+    margin: 5px 0;
+    color: black;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    max-width: 600px;
+    margin-bottom: 20px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    text-align: start;
+    border: 1px solid #ccc;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff7eb3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #ff4f81;
+}
+
+#message {
+    font-size: 13px;
+    color: #333;
+    margin-top: 10px;
+}
+
+.signup-redirect {
+    font-size: 16px;
+    color: #007BFF;
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.signup-redirect:hover {
+    text-decoration: underline;
+}
