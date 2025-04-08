@@ -1,6 +1,7 @@
 // Ensure Firebase is loaded
 document.addEventListener("DOMContentLoaded", function () {
     // Firebase Configuration
+    // Change this according to your own api key and etc.
     const firebaseConfig = {
         apiKey: "AIzaSyCH3WhU8sZXerI0zz_Q2_dHQp4XFFAStpQ",
         authDomain: "gdsc-project-xu.firebaseapp.com",
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Login Function
     document.querySelector("#login-button")?.addEventListener("click", (e) => {
         e.preventDefault();
-        
+
         const email = document.querySelector("#email").value;
         const password = document.querySelector("#password").value;
         const messageElement = document.querySelector("#login-message");
@@ -30,8 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
         auth.signInWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                console.log("User logged in:", userCredential.user.email);
-                window.location.href = "dashboard.html"; 
+                const user = userCredential.user;
+
+                if (user.emailVerified) {
+                    console.log("User logged in:", user.email);
+                    window.location.href = "dashboard.html";
+                } else {
+                    auth.signOut();
+                    messageElement.textContent = "Please verify your email before logging in.";
+                }
             })
             .catch((error) => {
                 console.error("Login Error:", error.message);
@@ -60,8 +68,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         auth.createUserWithEmailAndPassword(email, password)
             .then((userCredential) => {
-                console.log("User signed up:", userCredential.user.email);
-                window.location.href = "login.html"; 
+                const user = userCredential.user;
+                console.log("User signed up:", user.email);
+
+                // ✅ Send email verification
+                user.sendEmailVerification()
+                    .then(() => {
+                        messageElement.textContent = "Verification email sent. Please check your inbox.";
+                        // Optional: redirect to login page after short delay
+                        setTimeout(() => {
+                            window.location.href = "login.html";
+                        }, 3000);
+                    })
+                    .catch((error) => {
+                        console.error("Error sending verification email:", error.message);
+                        messageElement.textContent = "Error sending verification email.";
+                    });
             })
             .catch((error) => {
                 console.error("Signup Error:", error.message);
